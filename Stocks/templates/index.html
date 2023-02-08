@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}" class="css" type="text/css">
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'index.js' %}"></script>
+    <title>Stock Price Prediction</title>       
+</head>
+<body style="background-color:rgb(194, 233, 236)">
+    <script>
+
+        $(document).ready(function()
+        {
+        const ctx = document.getElementById('myChart_3').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ linear_regression_actual | safe}},
+                datasets: [{
+                    label: 'Actual Price for {{ name}} from {{ start }} to {{ end }}',
+                    data: {{ linear_regression_actual | safe }},
+                    borderColor:"red",
+                    backgroundColor:'black',
+                    lineTension : 0,
+                    fill : false
+                }]  
+            },
+            options:{
+               
+                scales:{
+                    xAxes: [{
+                        display: false //this will remove all the x-axis grid lines
+                    }]
+                }
+            }
+        });
+    });
+    $(document).ready(function()
+        {
+        const ctx = document.getElementById('myChart_5').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ linear_regression_actual | safe}},
+                datasets: [{
+                    label: 'Predicted Price for {{ name}} from {{ start }} to {{ end }}',
+                    data: {{ stacked_predict_test | safe }},
+                    borderColor:"green",
+                    backgroundColor:'black',
+                    lineTension : 0,
+                    fill : false
+                }]  
+            },
+            options:{
+               
+                scales:{
+                    xAxes: [{
+                        display: false //this will remove all the x-axis grid lines
+                    }]
+                }
+            }
+        });
+    });
+    $(document).ready(function()
+        {
+        const ctx = document.getElementById('myChart_6').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ linear_regression_predicted | safe}},
+                datasets: [{
+                    label: 'Actual Price for {{ name}} from {{ start }} to {{ end }}',
+                    data: {{ stacked_predict_train | safe }},
+                    borderColor:"red",
+                    backgroundColor:'black',
+                    lineTension : 0,
+                    fill : false
+                }]  
+            },
+            options:{
+               
+                scales:{
+                    xAxes: [{
+                        display: false //this will remove all the x-axis grid lines
+                    }]
+                }
+            }
+        });
+    });
+ $(document).ready(function()
+    {
+    const ctx = document.getElementById('myChart_4').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ linear_regression_predicted | safe}},
+            datasets: [{
+                label: 'Predicted Price for {{ name}} from {{ start }} to {{ end }}',
+                data: {{ linear_regression_predicted | safe }},
+                borderColor:"green",
+                backgroundColor:'black',
+                lineTension : 0,
+                fill : false
+            }]  
+        },
+        options:{
+           
+            scales:{
+                xAxes: [{
+                    display: false //this will remove all the x-axis grid lines
+                }]
+            }
+        }
+    });
+});
+$(document).ready(function()
+    {
+    const ctx = document.getElementById('myChart_2').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ hundredaysavg | safe}},
+            datasets: [{
+                label: 'Closing Price for {{ name}} from {{ start }} to {{ end }}',
+                data: {{ hundredaysavg | safe }},
+                borderColor:"red",
+                backgroundColor:'black',
+                lineTension : 0,
+                fill : false
+            }]  
+        },
+        options:{
+           
+            scales:{
+                xAxes: [{
+                    display: false //this will remove all the x-axis grid lines
+                }]
+            }
+        }
+    });
+});
+$(document).ready(function()
+{
+    const ctx = document.getElementById('myChart_1').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ daysavg | safe}},
+            datasets: [{
+                label: 'Closing Price for {{ name}} from {{ start }} to {{ end }}',
+                data: {{ daysavg | safe }},
+                borderColor:"red",
+                backgroundColor:'black',
+                lineTension : 0,
+                fill : false
+            }]  
+        },
+        options:{
+
+            scales:{
+                xAxes: [{
+                    display: false //this will remove all the x-axis grid lines
+                }]
+            }
+        }
+    });
+});
+$(document).ready(function()
+{
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ data | safe}},
+            datasets: [{
+                label: 'Closing Price for {{ name}} from {{ start }} to {{ end }}',
+                data: {{ data | safe }},
+                borderColor:"red",
+                backgroundColor:'black',
+                lineTension : 0,
+                fill : false
+            }]
+        },
+        options:{
+           
+            scales:{
+                xAxes: [{
+                    display: false //this will remove all the x-axis grid lines
+                }]
+            }
+        }
+    });
+});
+
+    </script>
+    <center>
+        <img src = "{% static 'images'%}/logo.png" alt="Not Found" width="200" height = "200"/>
+    </center>
+    <br><br>
+        <center><span id = "heading">Stock Price Prediction</span></center>
+
+        <br>
+        <br>
+        <center>
+        <form action="{% url 'getSymbol' %}" method = "POST">
+            {% csrf_token %}
+            <h3><span style="font-family:monospace">Enter the Company Ticker :- </span></h3> 
+            <input type = "text" placeholder = "ENTER COMPANY SYMBOL" name="ticker_name" id="text_box">
+            <br>
+            <p id = "exp" ><span title = "APPLE">AAPL</span>,<span title = "MICROSOFT">MSFT</span>,
+                <span title = "SONY">SONY</span>,
+                <span title = "Gold Feb 23">GC=F</span>,
+                <span title = "TESLA">TSLA</span>,
+                <span title = "Tata Motors Limited ADR">TTM</span> etc</p>
+            <br>
+            <span id = "from"> From : </span><input id ="start" type="number" name = "start" value = "start"/><span id = "to"> To: </span><input id ="end" type="number" name="end" value ="end"/>
+            <br><br>
+            <input type="submit" value="Predict" id = "button">
+        </form>
+    </center>
+
+
+<br>
+<div class="graphs">
+    <div id="graph1" style="float:left; width:500px; height:500px;">
+    <center><span class ="close">Visualization of Closing Price</span></center>
+    <br>
+    <canvas id = "myChart" ></canvas>
+    </div>
+    <div id="graph2" style="float:left; width:500px; height:500px;">
+        <center><span class ="close">Visualization of 7 Day Moving Average</span></center>
+        <br>
+        <canvas id = "myChart_1" ></canvas>
+    </div>
+    <div id="graph3" style="float:left; width:500px; height:500px;"> 
+        <center><span class ="close">Visualization of 100 Day Moving Average</span></center>
+        <br>
+        <canvas id = "myChart_2" ></canvas>
+    </div>
+</div>
+<br>
+<br><br><br>
+<div class="Prediction">
+    <center><strong><span id = "lr">Prediction Using Linear Regression</span></strong></center>
+    <br>
+    <div class="graph4" style="float:left; width:50%; height:500px;"> 
+        <center><span class ="close">Actual Price</span></center>
+        <br>
+        <canvas id = "myChart_3" ></canvas>
+    </div>
+    <div class="graph4" style="float:left; width:50%; height:500px;"> 
+        <center><span class ="close">Predicted Price</span></center>
+        <br>
+        <canvas id = "myChart_4" ></canvas>
+    </div><br>
+    <center><strong><span id = "lacc"> Accuracy Score Of the Model : {{ linear_regression_accuracy_score }}</span></strong></center>
+</div>
+<div class="Prediction">
+    <center><strong><span id = "lr">Prediction Using LSTM</span></strong></center>
+    <br>
+    <div class="graph5" style="float:left; width:50%; height:500px;"> 
+        <center><span class ="close">Testing Data Predict</span></center>
+        <br>
+        <canvas id = "myChart_5" ></canvas>
+    </div>
+    <div class="graph6" style="float:left; width:50%; height:500px;"> 
+        <center><span class ="close">Training Data Predict</span></center>
+        <br>
+        <canvas id = "myChart_6" ></canvas>
+    </div><br>
+    <center><strong><span id = "lacc"> RMSE for training Data : {{ stacked_mean_train }}</span><br>
+        <span id = "lacc"> RMSE for testing Data : {{ stacked_mean_test }}</span>
+    </strong></center>
+</div>
+    <center>
+            <div class = "names" style="float:left;padding-left:50px;align-items:center">
+                {% comment %} <img src="{% static 'images'%}/harender.jpg" alt="harender Singh" width = "200px" height="200px"><br> {% endcomment %}
+                <div style="display:contents">
+                    <strong><span class="name" style="font-family:monospace;color:brown">Harender Singh - 52010073</span></strong><br>
+                    <strong><span class="gmail" style="font-family:monospace;color:red"> harender_52010073@nitkkr.ac.in</span></strong>
+                </div>
+            </div>
+            <div class = "names" style="float:left;padding-left:50px;align-items:center">
+                {% comment %} <img src="{% static 'images'%}/gaurav.jpg" alt="Gaurav Chaudhary" width = "200px" height="200px"><br> {% endcomment %}
+                <div style="display:contents">
+                    <strong><span class="name" style="font-family:monospace;color:brown">Gaurav Chaudhary - 52010030</span></strong><br>
+                    <strong><span class="gmail" style="font-family:monospace;color:red"> gaurav_52010030@nitkkr.ac.in</span></strong>
+                </div>
+            </div>
+            <div class= "names" style="float:left;padding-left:50px;align-items:center">
+                {% comment %} <img src="{% static 'images'%}/ravi.jpg" alt="Ravi Sahu" width = "200px" height="200px"><br> {% endcomment %}
+                <div style="display:contents">
+                    <strong><span class="name" style="font-family:monospace;color:brown">Ravi-Sahu - 52010094</span></strong><br>
+                    <strong><span class="gmail" style="font-family:monospace;color:red"> ravi_52010094@nitkkr.ac.in</span></strong>
+                </div>
+            </div>
+    </center>
+</body>
+</html>

@@ -1,0 +1,99 @@
+body{
+    background-color: rgb(210, 31, 31);
+    padding:20px;
+}
+#heading{
+    color:rgb(134, 20, 14);
+    margin-top:2%;
+    font-weight: bolder;
+    font-size: 80px;
+    font-family:'Franklin Gothic large', 'Arial Narrow', Arial, sans-serif;
+}
+#text_box{
+    width: 400px;
+    height:100x;
+    padding:10px;
+    border-radius: 10px;
+}
+#button{
+    padding:10px;
+    border-radius: 10px;
+}
+#exp{
+    font-size: smaller;
+}
+#from{
+    font-size:medium;
+    color:brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#to{
+    font-size:medium;
+    color:brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#start{
+    padding:5px;
+    border-radius:10px;
+    color:brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#end{
+    padding:5px;
+    border-radius:10px;
+    color:brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#graph1 {
+    float:left; 
+    background:rgb(197, 238, 223);
+    padding:10px;;
+}
+#graph2{
+    float:left; 
+    background:rgb(177, 236, 177);
+    padding:10px;
+}
+#graph3{
+    float:right;
+    background:rgb(195, 195, 242);
+    padding:10px;
+}
+#graph4{
+    float:right;
+    background:rgb(195, 195, 242);
+    padding:10px;
+}
+.close{
+    font-size:large;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: solid;
+}
+
+#lr{
+    font-size:larger;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: solid;
+}
+#exp{
+    color:red;
+}
+.images_in{
+    padding:10px;
+    align-items: center;
+}
+.names{
+    padding:50px;
+}
+#lacc{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+}
+#ticker{
+    font-family: monospace;
+    
+}
+.name{
+    font-family: monospace;
+    color: brown;
+}
